@@ -11,7 +11,7 @@ function RepoEmpty() {
       </p>
       <Link href="/">
         <Button color="brightRed" variant="outlined" size="large">
-          Repositories
+          Repositories List
         </Button>
       </Link>
     </div>

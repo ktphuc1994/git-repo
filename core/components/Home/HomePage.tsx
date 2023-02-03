@@ -1,5 +1,6 @@
-import useSWR from 'swr';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import useSWR from 'swr';
 
 // import local service
 import USER_SERV from '../../services/userServ';
@@ -19,15 +20,13 @@ import { Box } from '@mui/system';
 import { InterfaceRepo, InterfaceRepoContext } from '../../interfaces/git';
 
 const HomePage = () => {
-  const router = useRouter();
-
-  const {
-    data: repoList,
-    error,
-    isLoading,
-  } = useSWR('repo-list', USER_SERV.getAuthUserRepo, {
-    refreshInterval: 1000 * 60 * 60,
-  });
+  const { data, error, isLoading } = useSWR(
+    'repo-list',
+    USER_SERV.getAuthUserRepo,
+    {
+      refreshInterval: 1000 * 60 * 60,
+    }
+  );
   if (error) {
     return (
       <div>
@@ -35,12 +34,20 @@ const HomePage = () => {
       </div>
     );
   }
-
+  const router = useRouter();
   const { setRepo } = useRepoContext() as InterfaceRepoContext;
+  const [searchName, setSearchName] = useState<string>('');
+  const projectNameRef = useRef<HTMLInputElement>(null);
+
+  const repoList = data?.filter((repo) => repo.name.includes(searchName));
 
   const handleCardClick = (repo: InterfaceRepo) => {
     setRepo(repo);
     router.push('/repo-detail');
+  };
+
+  const handleSearchProject = () => {
+    setSearchName(projectNameRef.current?.value || '');
   };
 
   return (
@@ -48,7 +55,10 @@ const HomePage = () => {
       <h2 className="mb-5 text-center text-3xl font-bold">
         LIST OF REPOSITORIES
       </h2>
-      <FilterBar />
+      <FilterBar
+        projectNameRef={projectNameRef}
+        handleSearchProject={handleSearchProject}
+      />
       <Box
         component="div"
         sx={{
@@ -59,15 +69,20 @@ const HomePage = () => {
           <InnerSpinner />
         ) : (
           repoList?.map((repo, index) => (
-            <div key={index.toString() + 'abxc'}>
-              <Card sx={{ maxWidth: 345 }}>
+            <div key={repo.name + index}>
+              <Card sx={{ width: '100%', mb: '1rem' }}>
                 <CardActionArea
                   onClick={() => {
                     handleCardClick(repo);
                   }}
                 >
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography
+                      color="primary"
+                      gutterBottom
+                      variant="h6"
+                      component="div"
+                    >
                       {repo.name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
