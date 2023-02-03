@@ -12,7 +12,12 @@ import {
   ListItemText,
   ListSubheader,
 } from '@mui/material';
-import { LocalLibrary, Archive, AccountCircle } from '@mui/icons-material';
+import {
+  Archive,
+  AccountCircle,
+  MenuBook,
+  Description,
+} from '@mui/icons-material';
 
 // import local interface
 import { InterfaceSidebar } from '../../interfaces/Layout/Layout.interface';
@@ -20,12 +25,14 @@ import { InterfaceSidebar } from '../../interfaces/Layout/Layout.interface';
 // import local constants
 import { commonConst } from '../../constants/common.const';
 
-const ItemOnList = ['Repositories'];
+const ItemOnList = ['Repositories', 'Repo-detail'];
 
 const getListIcon = (text: string) => {
   switch (text) {
     case 'Repositories':
-      return <LocalLibrary />;
+      return <MenuBook />;
+    case 'Repo-detail':
+      return <Description />;
     default:
       return <Archive />;
   }
