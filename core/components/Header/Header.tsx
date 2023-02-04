@@ -1,5 +1,8 @@
 import Link from 'next/link';
 
+// import local components
+import HeaderUser from './HeaderUser';
+
 // import MUI components
 import { Box, IconButton, Typography } from '@mui/material';
 import { Menu } from '@mui/icons-material';
@@ -13,33 +16,37 @@ function Header({ handleSidebarToggle }: InterfaceHeader) {
       sx={{
         flexShrink: 0,
         display: 'flex',
+        justifyContent: 'space-between',
         alignItems: 'center',
         px: '1.5rem',
         py: '0.5rem',
       }}
     >
-      <IconButton
-        color="inherit"
-        aria-label="open sidebar"
-        edge="start"
-        onClick={handleSidebarToggle}
-        sx={{ mr: 1.5, display: { md: 'none' } }}
-      >
-        <Menu />
-      </IconButton>
-      <Link href="/" className="font-bold text-3xl">
-        MY
-        <Typography
-          component="span"
-          sx={{
-            fontSize: 'inherit',
-            fontWeight: 'inherit',
-            color: 'primary.main',
-          }}
+      <div className="flex items-center">
+        <IconButton
+          color="inherit"
+          aria-label="open sidebar"
+          edge="start"
+          onClick={handleSidebarToggle}
+          sx={{ mr: 1.5, display: { md: 'none' } }}
         >
-          PROFILE
-        </Typography>
-      </Link>
+          <Menu />
+        </IconButton>
+        <Link href="/" className="font-bold text-3xl">
+          MY
+          <Typography
+            component="span"
+            sx={{
+              fontSize: 'inherit',
+              fontWeight: 'inherit',
+              color: 'primary.main',
+            }}
+          >
+            PROFILE
+          </Typography>
+        </Link>
+      </div>
+      <HeaderUser />
     </Box>
   );
 }

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { localServ } from './localServ';
 
 const AXIOS_INSTANCE_GENERATOR = (URL: string) => {
   const config = {
@@ -7,8 +8,18 @@ const AXIOS_INSTANCE_GENERATOR = (URL: string) => {
       Authorization: 'BEARER ' + process.env.NEXT_PUBLIC_FINE_GRAIN_TOKEN,
     },
   };
-  console.log(config);
   return axios.create(config);
 };
 
-export { AXIOS_INSTANCE_GENERATOR };
+const AXIOS_LOCAL_INSTANCE = (URL: string) => {
+  const token = localServ.getToken();
+  const config = {
+    baseURL: URL,
+    headers: {
+      Authorization: token,
+    },
+  };
+  return axios.create(config);
+};
+
+export { AXIOS_INSTANCE_GENERATOR, AXIOS_LOCAL_INSTANCE };

@@ -1,3 +1,5 @@
+import { InterfaceSnackBarState } from '../interfaces/commons';
+
 interface InterfaceCommonConst {
   sidebarWidth: number;
   customColor: Array<
@@ -14,4 +16,10 @@ export const commonConst: InterfaceCommonConst = {
     'limeGreen',
     'darkPink',
   ],
+};
+
+export const snackBarInit: InterfaceSnackBarState = {
+  open: false,
+  message: '',
+  severity: 'success',
 };

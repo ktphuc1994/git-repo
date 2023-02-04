@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Avatar, Box, Button, Link, Typography } from '@mui/material';
 import { InterfaceRepoDetailComponent } from '../../interfaces/repository';
 
 function Details({ repo }: InterfaceRepoDetailComponent) {
@@ -20,24 +20,31 @@ function Details({ repo }: InterfaceRepoDetailComponent) {
           -{repo.id}
         </Typography>
       </Typography>
-      <Box component="div">
-        <Typography component="p">Original Owner</Typography>
-        <p>{repo.owner.login}</p>
-        <p>{repo.owner.avatar_url}</p>
-        <p>{repo.owner.html_url}</p>
-      </Box>
-      <Box>
-        <Typography component="p">Description</Typography>
-        <Typography component="p">{repo.description}</Typography>
-      </Box>
-      <Button
-        variant="outlined"
-        color="error"
-        href={repo.html_url}
-        target="_blank"
-      >
-        TO GITHUB
-      </Button>
+      <div className="ml-2">
+        <Box component="div" sx={{ mb: '1rem' }}>
+          <Typography component="p" sx={{ fontWeight: 600 }}>
+            Original Owner
+          </Typography>
+          <Button href={repo.owner.html_url} target="_blank">
+            <Avatar alt={repo.owner.login} src={repo.owner.avatar_url} />
+            <p className="ml-2">{repo.owner.login}</p>
+          </Button>
+        </Box>
+        <Box component="div" sx={{ mb: '1rem' }}>
+          <Typography component="p" sx={{ fontWeight: 600 }}>
+            Description
+          </Typography>
+          <Typography component="p">{repo.description}</Typography>
+        </Box>
+        <Button
+          variant="outlined"
+          color="error"
+          href={repo.html_url}
+          target="_blank"
+        >
+          TO GITHUB
+        </Button>
+      </div>
     </Box>
   );
 }

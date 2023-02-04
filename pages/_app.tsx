@@ -7,6 +7,7 @@ import type { AppProps } from 'next/app';
 
 // import local context
 import { RepoProvider } from '../core/context/repoContext';
+import { AuthProvider } from '../core/context/authContext';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -21,9 +22,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
+    // <AuthProvider>
     <RepoProvider>
       <Fragment>{getLayout(<Component {...pageProps} />)}</Fragment>
     </RepoProvider>
+    // </AuthProvider>
   );
 }
 

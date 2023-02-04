@@ -9,5 +9,9 @@ module.exports = {
   theme: {
     extend: {},
   },
+  // corePlugins: {
+  //   preflight: false,
+  // },
+  // important: '#__next',
   plugins: [],
 };

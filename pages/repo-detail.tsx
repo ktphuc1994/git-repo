@@ -1,6 +1,5 @@
 // import type
-import type { ReactElement } from 'react';
-import type { NextPageWithLayout } from './_app';
+import { ReactElement } from 'react';
 
 // import local context
 import { useRepoContext } from '../core/context/repoContext';
@@ -8,10 +7,11 @@ import { useRepoContext } from '../core/context/repoContext';
 // import local components
 import Layout from '../core/HOC/Layout';
 import RepoEmpty from '../core/components/RepoDetail/RepoEmpty';
-
-// import local interface
-import { InterfaceRepoContext } from '../core/interfaces/git';
 import Details from '../core/components/RepoDetail';
+
+// import local type and interface
+import type { NextPageWithLayout } from './_app';
+import { InterfaceRepoContext } from '../core/interfaces/git';
 
 const RepoDetail: NextPageWithLayout = () => {
   const { repo } = useRepoContext() as InterfaceRepoContext;
