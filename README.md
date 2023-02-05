@@ -18,15 +18,14 @@ $ Axios
 $ SWR
 ```
 
-## Token (for Testing Only)
+## Github Authentication Token
 
 ```bash
-$ Fine Grain Token
-$ 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
+$ Fine-grained Token is recommended
 ```
 
-<p>Replace process.env.NEXT_PUBLIC_FINE_GRAIN_TOKEN at configURL.ts with this token.</p>
-<p>Or create a .env.local file and add NEXT_PUBLIC_FINE_GRAIN_TOKEN with the token above.</p>
+<p>A github API token must be use in place of process.env.NEXT_PUBLIC_FINE_GRAIN_TOKEN at configURL.ts</p>
+<p>Find-grain token is the most suitable. Read-only. No other permission needed.</p>
 
 ## Running the app
 
