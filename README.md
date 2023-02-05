@@ -50,24 +50,24 @@ $ Authenticated Token is removed from Local Storage. mutateUser from SWR is call
 
 ## Private Route
 
-<p align="center">Private Route is trigger by fetching user information at Header/HeaderUser component, using useUser hook. If the fetching failed with code 403 (Unathorized) or 404 (Not found), Authenticated Token at Local Storage (if any) will be removed, client will be pushed to "/login" page.</p>
-<p align="center">Private Route covers very route that is wrapped inside Layout, which means Route("/", "/repo-detail")</p>
+<p>Private Route is trigger by fetching user information at Header/HeaderUser component, using useUser hook. If the fetching failed with code 403 (Unathorized) or 404 (Not found), Authenticated Token at Local Storage (if any) will be removed, client will be pushed to "/login" page.</p>
+<p>Private Route covers very route that is wrapped inside Layout, which means Route("/", "/repo-detail")</p>
 
 ## RepoContext
 
-<p align="center">RepoContext wraps the whole app. Provide 2 states to store repository details and etag (from Github API)</p>
+<p>RepoContext wraps the whole app. Provide 2 states to store repository details and etag (from Github API)</p>
 
 ## Reduce request to Github API with Etag
 
-<p align="center">Etag will be added to Header of Requests sending to Github server. If Etag matchs with previous one, server will response with status code 304. Client will then stop fetching and use previous cached data for rendering.</p>
-<p align="center">Etag is store in a state at RepoContext. So if user refresh the page (cache data cleared), Etag will also be cleared and client can fetch data again.</p>
+<p>Etag will be added to Header of Requests sending to Github server. If Etag matchs with previous one, server will response with status code 304. Client will then stop fetching and use previous cached data for rendering.</p>
+<p>Etag is store in a state at RepoContext. So if user refresh the page (cache data cleared), Etag will also be cleared and client can fetch data again.</p>
 
 ## Homepage (My Repositories)
 
-<p align="center">Fetching Repository List from Github using AXIOS and SWR. Then filtering the List by searchName state, and render.</p>
-<p align="center">projectNameRef is attached to search input. On Search Button click: setSearchName to the value of projectNameRef => Rererdering</p>
-<p align="center">On Each Repository Click: using setRepo context from RepoContext to update repository detail state. Then directing client to "/repo-detail" </p>
+<p>Fetching Repository List from Github using AXIOS and SWR. Then filtering the List by searchName state, and render.</p>
+<p>projectNameRef is attached to search input. On Search Button click: setSearchName to the value of projectNameRef => Rererdering</p>
+<p>On Each Repository Click: using setRepo context from RepoContext to update repository detail state. Then directing client to "/repo-detail" </p>
 
 ## Repository Detail
 
-<p align="center">Using repository detail state (repo) to render content. If no repo exist, render EmptyRepo page.</p>
+<p>Using repository detail state (repo) to render content. If no repo exist, render EmptyRepo page.</p>
