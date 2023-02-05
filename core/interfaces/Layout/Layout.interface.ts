@@ -6,10 +6,11 @@ export interface InterfaceLayout extends BasePropsInterface {
   icon?: string;
 }
 
-export interface InterfaceHeader extends BasePropsInterface {
+export interface InterfaceHeaderComponent extends BasePropsInterface {
   handleSidebarToggle: () => void;
 }
 
-export interface InterfaceSidebar extends InterfaceHeader {
+export interface InterfaceSidebarComponents extends BasePropsInterface {
+  handleSidebarClose: () => void;
   isMobileOpen: boolean;
 }

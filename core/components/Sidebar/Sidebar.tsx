@@ -20,7 +20,7 @@ import {
 } from '@mui/icons-material';
 
 // import local interface
-import { InterfaceSidebar } from '../../interfaces/Layout/Layout.interface';
+import { InterfaceSidebarComponents } from '../../interfaces/Layout/Layout.interface';
 
 // import local constants
 import { commonConst } from '../../constants/common.const';
@@ -38,7 +38,10 @@ const getListIcon = (text: string) => {
   }
 };
 
-function Sidebar({ handleSidebarToggle, isMobileOpen }: InterfaceSidebar) {
+function Sidebar({
+  handleSidebarClose,
+  isMobileOpen,
+}: InterfaceSidebarComponents) {
   const router = useRouter();
 
   const sidebar = (
@@ -61,7 +64,7 @@ function Sidebar({ handleSidebarToggle, isMobileOpen }: InterfaceSidebar) {
               href={pathName}
               passHref
               key={text + index}
-              onClick={handleSidebarToggle}
+              onClick={handleSidebarClose}
             >
               <ListItem disablePadding>
                 <ListItemButton
@@ -132,7 +135,7 @@ function Sidebar({ handleSidebarToggle, isMobileOpen }: InterfaceSidebar) {
       <Drawer
         variant="temporary"
         open={isMobileOpen}
-        onClose={handleSidebarToggle}
+        onClose={handleSidebarClose}
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
         }}

@@ -8,9 +8,9 @@ import { Box, IconButton, Typography } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 
 // import local interface
-import { InterfaceHeader } from '../../interfaces/Layout/Layout.interface';
+import { InterfaceHeaderComponent } from '../../interfaces/Layout/Layout.interface';
 
-function Header({ handleSidebarToggle }: InterfaceHeader) {
+function Header({ handleSidebarToggle }: InterfaceHeaderComponent) {
   return (
     <Box
       sx={{
