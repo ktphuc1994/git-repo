@@ -1,8 +1,18 @@
 import { FormEvent } from 'react';
 import { useRouter } from 'next/router';
 
+// import local hooks
+import useUser from '../../hooks/useUser';
+
 // import local services
 import USER_SERV from '../../services/userServ';
+import { localServ } from '../../services/localServ';
+
+// import local components
+import AlreadyLogin from './AlreadyLogin';
+
+// import local interface
+import { InterfaceLoginPageComponent } from '../../interfaces/Pages/Login.interface';
 
 // import MUI component
 import {
@@ -16,10 +26,6 @@ import {
   Typography,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { InterfaceLoginPageComponent } from '../../interfaces/Pages/Login.interface';
-import AlreadyLogin from './AlreadyLogin';
-import { localServ } from '../../services/localServ';
-import useUser from '../../hooks/useUser';
 
 const LoginPage = ({ setSnackBarState }: InterfaceLoginPageComponent) => {
   const router = useRouter();

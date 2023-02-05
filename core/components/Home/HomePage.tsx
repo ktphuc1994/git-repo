@@ -6,7 +6,7 @@ import useSWR from 'swr';
 import USER_SERV from '../../services/userServ';
 
 // imoprt local context
-import { useRepoContext } from '../../context/repoContext';
+import { useRepoContext } from '../../context/RepoContext';
 
 // import local components
 import InnerSpinner from '../common/Spinner/InnerSpinner';
@@ -16,7 +16,7 @@ import FilterBar from './FilterBar';
 import { Card, CardActionArea, CardContent, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-// imoprt local interface
+// imoprt interface and types
 import { InterfaceRepo } from '../../interfaces/git';
 import { InterfaceRepoContext } from '../../interfaces/context';
 import { AxiosError } from 'axios';

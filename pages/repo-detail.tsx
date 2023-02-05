@@ -2,7 +2,7 @@
 import { ReactElement } from 'react';
 
 // import local context
-import { useRepoContext } from '../core/context/repoContext';
+import { useRepoContext } from '../core/context/RepoContext';
 
 // import local components
 import Layout from '../core/HOC/Layout';

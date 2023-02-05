@@ -6,7 +6,7 @@ import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 
 // import local context
-import { RepoProvider } from '../core/context/repoContext';
+import { RepoProvider } from '../core/context/RepoContext';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
