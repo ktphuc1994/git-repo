@@ -10,11 +10,13 @@ This example create a site to fetch my [`repository list`](https://github.com/kt
 
 ## Framework and library
 
-NextJS
-MUI (Material UI)
-TailwindCSS
-Axios
-SWR
+```bash
+$ NextJS
+$ Material UI
+$ TailwindCSS
+$ Axios
+$ SWR
+```
 
 ## Running the app
 
@@ -50,7 +52,8 @@ $ Authenticated Token is removed from Local Storage. mutateUser from SWR is call
 
 ## Private Route
 
-<p>Private Route is trigger by fetching user information at Header/HeaderUser component, using useUser hook. If the fetching failed with code 403 (Unathorized) or 404 (Not found), Authenticated Token at Local Storage (if any) will be removed, client will be pushed to "/login" page.</p>
+<p>Private Route is trigger by fetching user information at Header/HeaderUser component, using useUser hook.</p>
+<p>If the fetching failed with code 403 (Unathorized) or 404 (Not found), Authenticated Token at Local Storage (if any) will be removed, client will be pushed to "/login" page.</p>
 <p>Private Route covers very route that is wrapped inside Layout, which means Route("/", "/repo-detail")</p>
 
 ## RepoContext
@@ -65,7 +68,7 @@ $ Authenticated Token is removed from Local Storage. mutateUser from SWR is call
 ## Homepage (My Repositories)
 
 <p>Fetching Repository List from Github using AXIOS and SWR. Then filtering the List by searchName state, and render.</p>
-<p>projectNameRef is attached to search input. On Search Button click: setSearchName to the value of projectNameRef => Rererdering</p>
+<p>projectNameRef is attached to search input ref. On Search Button click: setSearchName to the value of projectNameRef, then rererdering</p>
 <p>On Each Repository Click: using setRepo context from RepoContext to update repository detail state. Then directing client to "/repo-detail" </p>
 
 ## Repository Detail
