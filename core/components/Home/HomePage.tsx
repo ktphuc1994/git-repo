@@ -9,7 +9,7 @@ import USER_SERV from '../../services/userServ';
 import { useRepoContext } from '../../context/repoContext';
 
 // import local components
-import InnerSpinner from '../Spinner/InnerSpinner';
+import InnerSpinner from '../common/Spinner/InnerSpinner';
 import FilterBar from './FilterBar';
 
 // import MUI Components
@@ -17,27 +17,37 @@ import { Card, CardActionArea, CardContent, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
 // imoprt local interface
-import { InterfaceRepo, InterfaceRepoContext } from '../../interfaces/git';
+import { InterfaceRepo } from '../../interfaces/git';
+import { InterfaceRepoContext } from '../../interfaces/context';
+import { AxiosError } from 'axios';
 
 const HomePage = () => {
+  const router = useRouter();
+  const { setRepo, gitEtag, setGitEtag } =
+    useRepoContext() as InterfaceRepoContext;
+  const [searchName, setSearchName] = useState<string>('');
+  const projectNameRef = useRef<HTMLInputElement>(null);
+
   const { data, error, isLoading } = useSWR(
     'repo-list',
-    USER_SERV.getAuthUserRepo,
+    () => USER_SERV.getAuthUserRepo(gitEtag, setGitEtag),
     {
+      onErrorRetry: (err: AxiosError) => {
+        const errStatus = err.response?.status;
+        if (errStatus === 304) return;
+      },
       refreshInterval: 1000 * 60 * 60,
+      revalidateOnFocus: false,
     }
   );
-  if (error) {
+  if (error && error instanceof AxiosError && error.response?.status !== 304) {
+    // console.log(error);
     return (
-      <div>
-        <p>There is an Error</p>
+      <div className="text-2xl text-center">
+        <p>There is an Error while loading page. Please try again later.</p>
       </div>
     );
   }
-  const router = useRouter();
-  const { setRepo } = useRepoContext() as InterfaceRepoContext;
-  const [searchName, setSearchName] = useState<string>('');
-  const projectNameRef = useRef<HTMLInputElement>(null);
 
   const repoList = data?.filter((repo) => repo.name.includes(searchName));
 
@@ -59,12 +69,7 @@ const HomePage = () => {
         projectNameRef={projectNameRef}
         handleSearchProject={handleSearchProject}
       />
-      <Box
-        component="div"
-        sx={{
-          height: '100%',
-        }}
-      >
+      <Box component="div">
         {isLoading ? (
           <InnerSpinner />
         ) : (

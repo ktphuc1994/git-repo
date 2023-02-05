@@ -1,29 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { apiHandler } from '../../../helpers/api/api-handler';
 
-export type LocalUserType = {
-  username: string;
-  email: string;
-  password: string;
-};
-export const userData = [
-  {
-    username: 'ktphuc',
-    email: 'khucthienphuc@gmail.com',
-    password: 'ktphuc1994',
-  },
-  { username: 'iamuser', email: 'iamuser@gmail.com', password: 'iamuser' },
-  { username: 'testing', email: 'test@gmail.com', password: 'test123' },
-];
+// import local interface
+import { InterfaceLocalUser } from '../../../core/interfaces/user';
 
-const getUser = (req: NextApiRequest, res: NextApiResponse<LocalUserType>) => {
+// import mock data
+import { userData } from '../../../data';
+
+const getUser = (
+  req: NextApiRequest,
+  res: NextApiResponse<InterfaceLocalUser>
+) => {
   const { authorization } = req.headers;
   if (!authorization) {
     res.status(403).end('Unathorized. Please login to continue.');
     return;
   }
 
-  const userInfo: LocalUserType = JSON.parse(authorization);
+  const userInfo: InterfaceLocalUser = JSON.parse(authorization);
   const user = userData.find((u) => u.username === userInfo.username);
   if (!user) {
     res

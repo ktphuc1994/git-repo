@@ -14,9 +14,9 @@ const HeaderUser = () => {
   const open = Boolean(anchorEl);
 
   // Server-render loading state
-  if (!user) {
-    return <div>...Loading</div>;
-  }
+  // if (!user) {
+  //   return <div>...Loading</div>;
+  // }
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -40,7 +40,7 @@ const HeaderUser = () => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        {user.username}
+        {!user ? '...Loading' : user.username}
       </Button>
       <Menu
         id="user-nav-menu"

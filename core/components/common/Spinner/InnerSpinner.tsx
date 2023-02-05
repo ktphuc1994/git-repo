@@ -1,5 +1,5 @@
 import { MoonLoader } from 'react-spinners';
-import { colorConst } from '../../constants/color.const';
+import { colorConst } from '../../../constants/color.const';
 
 const InnerSpinner = () => {
   return (

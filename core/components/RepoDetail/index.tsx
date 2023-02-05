@@ -1,5 +1,5 @@
-import { Avatar, Box, Button, Link, Typography } from '@mui/material';
-import { InterfaceRepoDetailComponent } from '../../interfaces/repository';
+import { Avatar, Box, Button, Typography } from '@mui/material';
+import { InterfaceRepoDetailComponent } from '../../interfaces/Pages/Repo.interface';
 
 function Details({ repo }: InterfaceRepoDetailComponent) {
   return (
@@ -34,7 +34,9 @@ function Details({ repo }: InterfaceRepoDetailComponent) {
           <Typography component="p" sx={{ fontWeight: 600 }}>
             Description
           </Typography>
-          <Typography component="p">{repo.description}</Typography>
+          <Typography component="p">
+            {repo.description ? repo.description : 'No description.'}
+          </Typography>
         </Box>
         <Button
           variant="outlined"

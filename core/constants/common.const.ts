@@ -6,7 +6,6 @@ interface InterfaceCommonConst {
     'darkMBlue' | 'brightRed' | 'darkOrange' | 'limeGreen' | 'darkPink'
   >;
 }
-
 export const commonConst: InterfaceCommonConst = {
   sidebarWidth: 240,
   customColor: [

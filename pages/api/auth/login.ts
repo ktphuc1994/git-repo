@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { apiHandler } from '../../../helpers/api/api-handler';
 
-// import mocker data
-import { userData } from '../user';
+// import mock data
+import { userData } from '../../../data';
 
 type ReqData = {
   email: string;

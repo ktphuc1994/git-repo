@@ -1,10 +1,16 @@
 import { useEffect } from 'react';
 import Router from 'next/router';
+
+// import SWR
 import useSWR from 'swr';
+
+// import local service
 import { localServ } from '../services/localServ';
-import { LocalUserType } from '../../pages/api/user';
 import USER_SERV from '../services/userServ';
+
+// import type and interface
 import { AxiosError } from 'axios';
+import { InterfaceLocalUser } from '../interfaces/user';
 
 export default function useUser({
   redirectTo = '',
@@ -14,12 +20,13 @@ export default function useUser({
     data: user,
     mutate: mutateUser,
     error,
-  } = useSWR<LocalUserType>('local-user', USER_SERV.getLocalUserInfo, {
+  } = useSWR<InterfaceLocalUser>('local-user', USER_SERV.getLocalUserInfo, {
     onErrorRetry: (err: AxiosError) => {
-      console.log(err);
+      // console.log(err);
       const errStatus = err.response?.status;
       if (errStatus === 404 || errStatus === 403) return;
     },
+    refreshInterval: 1000 * 60 * 60,
   });
 
   useEffect(() => {

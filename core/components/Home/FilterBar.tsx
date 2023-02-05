@@ -1,5 +1,5 @@
 // import local interface
-import { InterfaceFilterBarComponents } from '../../interfaces/repository';
+import { InterfaceFilterBarComponents } from '../../interfaces/Pages/Repo.interface';
 
 // import MUI components
 import { Button, Input, TextField } from '@mui/material';

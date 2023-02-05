@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
-
 export interface InterfaceGitUser {
   id: number;
   login: string;
@@ -15,9 +13,4 @@ export interface InterfaceRepo {
   description: string;
   private: boolean;
   owner: InterfaceGitUser;
-}
-
-export interface InterfaceRepoContext {
-  repo: InterfaceRepo | null;
-  setRepo: Dispatch<SetStateAction<InterfaceRepo | null>>;
 }

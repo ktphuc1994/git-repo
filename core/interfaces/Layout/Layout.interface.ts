@@ -13,7 +13,3 @@ export interface InterfaceHeader extends BasePropsInterface {
 export interface InterfaceSidebar extends InterfaceHeader {
   isMobileOpen: boolean;
 }
-
-export interface InterfaceNavigation extends BasePropsInterface {
-  toggleSidebar: (open: boolean) => void;
-}

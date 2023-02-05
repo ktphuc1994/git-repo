@@ -16,7 +16,7 @@ import {
   Typography,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { InterfaceLoginPageComponent } from '../../interfaces/Pages/LoginPage.interface';
+import { InterfaceLoginPageComponent } from '../../interfaces/Pages/Login.interface';
 import AlreadyLogin from './AlreadyLogin';
 import { localServ } from '../../services/localServ';
 import useUser from '../../hooks/useUser';
@@ -24,7 +24,6 @@ import useUser from '../../hooks/useUser';
 const LoginPage = ({ setSnackBarState }: InterfaceLoginPageComponent) => {
   const router = useRouter();
   const { user, mutateUser } = useUser();
-  console.log(user);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,6 +44,7 @@ const LoginPage = ({ setSnackBarState }: InterfaceLoginPageComponent) => {
         }, 2000);
       })
       .catch((err) => {
+        console.log(err);
         const errMess = err.response.data
           ? err.response.data
           : 'Unexpected Error. Please try again later.';

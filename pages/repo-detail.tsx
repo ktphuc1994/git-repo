@@ -11,7 +11,7 @@ import Details from '../core/components/RepoDetail';
 
 // import local type and interface
 import type { NextPageWithLayout } from './_app';
-import { InterfaceRepoContext } from '../core/interfaces/git';
+import { InterfaceRepoContext } from '../core/interfaces/context';
 
 const RepoDetail: NextPageWithLayout = () => {
   const { repo } = useRepoContext() as InterfaceRepoContext;
@@ -27,7 +27,7 @@ const RepoDetail: NextPageWithLayout = () => {
 };
 
 RepoDetail.getLayout = (page: ReactElement) => (
-  <Layout title="My Profile" description="A simple profile coded with NextJS">
+  <Layout title="Repository detail" description="Github repository details">
     {page}
   </Layout>
 );

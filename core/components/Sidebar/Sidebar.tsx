@@ -57,7 +57,12 @@ function Sidebar({ handleSidebarToggle, isMobileOpen }: InterfaceSidebar) {
           const pathName =
             text === 'Repositories' ? '/' : '/' + text.toLowerCase();
           return (
-            <Link href={pathName} passHref key={text + index}>
+            <Link
+              href={pathName}
+              passHref
+              key={text + index}
+              onClick={handleSidebarToggle}
+            >
               <ListItem disablePadding>
                 <ListItemButton
                   selected={pathName === router.pathname}
@@ -112,7 +117,7 @@ function Sidebar({ handleSidebarToggle, isMobileOpen }: InterfaceSidebar) {
         variant="permanent"
         sx={{
           display: { xs: 'none', md: 'block' },
-          // position: 'fixed',
+          position: 'fixed',
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             minHeight: '100vh',

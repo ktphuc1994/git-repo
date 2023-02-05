@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useState } from 'react';
 
 // import local components
@@ -11,8 +12,15 @@ import { InterfaceSnackBarState } from '../core/interfaces/commons';
 const Login = () => {
   const [snackBarState, setSnackBarState] =
     useState<InterfaceSnackBarState>(snackBarInit);
+
   return (
     <>
+      <Head>
+        <title>Login</title>
+        <meta name="description" content="Login Page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <LoginPage setSnackBarState={setSnackBarState} />
       <SnackBar
         snackBarState={snackBarState}
