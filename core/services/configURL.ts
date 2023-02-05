@@ -1,11 +1,14 @@
 import axios from 'axios';
 import { localServ } from './localServ';
 
+const fineGrainToken =
+  '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';
+
 const AXIOS_INSTANCE_GENERATOR = (URL: string, etag?: string) => {
   const config = {
     baseURL: URL,
     headers: {
-      Authorization: 'BEARER ' + process.env.NEXT_PUBLIC_FINE_GRAIN_TOKEN,
+      Authorization: 'BEARER ' + fineGrainToken,
       'If-None-Match': etag ? etag : '',
     },
   };
